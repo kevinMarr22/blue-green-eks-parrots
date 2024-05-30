@@ -34,11 +34,11 @@ jobs:
           username: ${{ secrets.AWS_ACCESS_KEY_ID }}
           password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      - name: Create ECR public repository if it does not exist
+      - name: Create ECR repository if it does not exist
         run: |
           REPO_NAME=${{ env.ECR_REPO }}
-          aws ecr-public describe-repositories --repository-names $REPO_NAME --region ${{ env.AWS_REGION }} || \
-          aws ecr-public create-repository --repository-name $REPO_NAME --region ${{ env.AWS_REGION }}
+          aws ecr describe-repositories --repository-names $REPO_NAME || \
+          aws ecr create-repository --repository-name $REPO_NAME
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
