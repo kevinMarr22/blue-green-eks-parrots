@@ -1,4 +1,4 @@
-name: Create EKS Cluster on AWS
+name: Create EKS Cluster on AWS (2 cluster blue green)
 
 # Trigger the workflow manually
 on:
