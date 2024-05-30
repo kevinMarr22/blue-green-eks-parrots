@@ -6,7 +6,7 @@ on:
 
 # Define environment variables using GitHub secrets
 env:
-  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_REGION: us-east-1
 
 # Define permissions for accessing AWS resources
 permissions:
