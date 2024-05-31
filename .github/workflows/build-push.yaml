@@ -47,3 +47,4 @@ jobs:
           file: ./app/Dockerfile
           push: true
           tags: ${{ secrets.AWS_ACCOUNT }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPO }}:${{github.run_number}}
+          
