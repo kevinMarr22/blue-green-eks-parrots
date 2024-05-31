@@ -6,7 +6,7 @@ on:
       ISTIO_VERSION:
         description: 'Istio version'
         required: true
-        default: '1.22'
+        default: '1.22.0'
       CLUSTER_NAME:
         description: 'EKS cluster name'
         required: true
