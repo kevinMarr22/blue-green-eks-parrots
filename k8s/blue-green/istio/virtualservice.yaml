@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: parrot
+  namespace: parrot
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - parrot
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: parrot
+            subset: blue
+          weight: 50
+        - destination:
+            host: parrot
+            subset: green
+          weight: 50

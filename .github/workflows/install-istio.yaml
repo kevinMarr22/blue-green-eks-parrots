@@ -1,0 +1,50 @@
+name: Install Istio
+
+on:
+  workflow_dispatch:
+    inputs:
+      ISTIO_VERSION:
+        description: 'Istio version'
+        required: true
+        default: '1.22'
+      CLUSTER_NAME:
+        description: 'EKS cluster name'
+        required: true
+        default: 'K8S-Blue-Green'
+      REGION:
+        description: 'AWS region'
+        required: true
+        default: 'us-east-1'
+
+jobs:
+  install-istio:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up environment variables
+      run: |
+        echo "ISTIO_VERSION=${{ github.event.inputs.ISTIO_VERSION }}" >> $GITHUB_ENV
+        echo "CLUSTER_NAME=${{ github.event.inputs.CLUSTER_NAME }}" >> $GITHUB_ENV
+        echo "REGION=${{ github.event.inputs.REGION }}" >> $GITHUB_ENV
+
+    - name: Install dependencies
+      run: sudo apt-get update && sudo apt-get install -y curl jq
+
+    - name: Download and install Istio
+      run: |
+        curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${{ env.ISTIO_VERSION }} sh -
+        export PATH=$PWD/istio-${{ env.ISTIO_VERSION }}/bin:$PATH
+        istioctl version
+
+    - name: Associate IAM OIDC provider
+      run: |
+        eksctl utils associate-iam-oidc-provider --region ${{ env.REGION }} --cluster ${{ env.CLUSTER_NAME }} --approve
+
+    - name: Install Istio base chart
+      run: istioctl install --set profile=demo -y
+
+    - name: Verify installation
+      run: kubectl get pods -n istio-system

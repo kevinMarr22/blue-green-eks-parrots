@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parrot-green
+  namespace: parrot
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: parrot-green
+      version: green
+  template:
+    metadata:
+      labels:
+        app: parrot-green
+        version: green
+    spec:
+      containers:
+        - name: parrot-green
+          resources:
+            requests:
+              memory: 300Mi
+              cpu: 300m
+            limits:
+              memory: 400Mi
+              cpu: 400m
+          image: 058264241924.dkr.ecr.us-east-1.amazonaws.com/parrot:1
+          ports:
+            - containerPort: 3000
+          env:
+            - name: TITLE
+              valueFrom:
+                configMapKeyRef:
+                  name: green
+                  key: TITLE
+            - name: IMAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: green
+                  key: IMAGE
