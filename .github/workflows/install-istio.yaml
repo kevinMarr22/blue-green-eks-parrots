@@ -57,7 +57,7 @@ jobs:
 
     - name: Download and install Istio
       run: |
-        curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${{ env.ISTIO_VERSION }} sh -
+        curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${{ env.ISTIO_VERSION }} TARGET_ARCH=x86_64 sh -
         export PATH=$PWD/istio-${{ env.ISTIO_VERSION }}/bin:$PATH
         echo "PATH=$PWD/istio-${{ env.ISTIO_VERSION }}/bin:$PATH" >> $GITHUB_ENV
         istioctl version
