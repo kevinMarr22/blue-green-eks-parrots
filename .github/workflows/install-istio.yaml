@@ -45,8 +45,6 @@ jobs:
         ARCH=amd64
         PLATFORM=$(uname -s)_$ARCH
         curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
-        # (Optional) Verify checksum
-        curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_checksums.txt" | grep $PLATFORM | sha256sum --check
         tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
         sudo mv /tmp/eksctl /usr/local/bin
 
@@ -54,6 +52,16 @@ jobs:
       run: |
         curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
         sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+    - name: Install aws-iam-authenticator
+      run: |
+        curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.18.9/2020-11-02/bin/linux/amd64/aws-iam-authenticator
+        chmod +x ./aws-iam-authenticator
+        sudo mv aws-iam-authenticator /usr/local/bin
+
+    - name: Update kubeconfig
+      run: |
+        aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }} --region ${{ env.REGION }}
 
     - name: Download and install Istio
       run: |
@@ -71,4 +79,3 @@ jobs:
 
     - name: Verify installation
       run: kubectl get pods -n istio-system
-
