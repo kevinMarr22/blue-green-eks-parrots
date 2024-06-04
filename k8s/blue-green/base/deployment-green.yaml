@@ -4,15 +4,15 @@ metadata:
   name: parrot-green
   namespace: parrot
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: parrot-green
+      app: parrot
       version: green
   template:
     metadata:
       labels:
-        app: parrot-green
+        app: parrot
         version: green
     spec:
       containers:
@@ -28,12 +28,12 @@ spec:
           ports:
             - containerPort: 3000
           env:
-            - name: TITLE
+            - name: WEBSITE_TITLE
               valueFrom:
                 configMapKeyRef:
                   name: green
                   key: TITLE
-            - name: IMAGE
+            - name: WEBSITE_IMAGE
               valueFrom:
                 configMapKeyRef:
                   name: green

@@ -2,4 +2,6 @@ resources:
   - namespace.yaml
   - deployment-blue.yaml
   - deployment-green.yaml
+  - service-blue.yaml
+  - service-green.yaml
   - service.yaml
