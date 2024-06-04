@@ -1,0 +1,5 @@
+resources:
+  - namespace.yaml
+  - deployment-green.yaml
+  - service-green.yaml
+  - service.yaml

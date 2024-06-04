@@ -4,7 +4,6 @@ metadata:
   name: parrot-blue
   namespace: parrot
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: parrot
@@ -24,18 +23,6 @@ spec:
             limits:
               memory: 64Mi
               cpu: 200m
-          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:1
+          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:23
           ports:
             - containerPort: 3000
-          env:
-            - name: WEBSITE_TITLE
-              valueFrom:
-                configMapKeyRef:
-                  name: blue
-                  key: TITLE
-            - name: WEBSITE_IMAGE
-              valueFrom:
-                configMapKeyRef:
-                  name: blue
-                  key: IMAGE
-

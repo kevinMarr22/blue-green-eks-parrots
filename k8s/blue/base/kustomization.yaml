@@ -1,0 +1,5 @@
+resources:
+  - namespace.yaml
+  - deployment-blue.yaml
+  - service-blue.yaml
+  - service.yaml
