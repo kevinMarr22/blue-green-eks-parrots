@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main #This name is temporary meanwhile Tatiane rename this branch.
-
+  workflow_dispatch:
 # Used for getting permissions to AWS resources through an OIDC federation
 permissions:
   id-token: write

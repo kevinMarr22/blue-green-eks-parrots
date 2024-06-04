@@ -19,12 +19,12 @@ spec:
         - name: parrot-blue
           resources:
             requests:
-              memory: 300Mi
-              cpu: 300m
+              memory: 64Mi
+              cpu: 200m
             limits:
-              memory: 400Mi
-              cpu: 400m
-          image: 058264241924.dkr.ecr.us-east-1.amazonaws.com/parrot:1
+              memory: 64Mi
+              cpu: 200m
+          image: 533267286761.dkr.ecr.us-east-1.amazonaws.com/parrot:1
           ports:
             - containerPort: 3000
           env:
