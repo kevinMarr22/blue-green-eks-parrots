@@ -16,8 +16,8 @@ spec:
         - destination:
             host: parrot
             subset: blue
-          weight: 50
+          weight: 100
         - destination:
             host: parrot
             subset: green
-          weight: 50
+          weight: 0

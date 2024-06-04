@@ -23,7 +23,7 @@ spec:
             limits:
               memory: 64Mi
               cpu: 200m
-          image: 192552324558.dkr.ecr.us-east-1.amazonaws.com/parrot:20
+          image: 905418150500.dkr.ecr.us-east-1.amazonaws.com/parrot:23
           ports:
             - containerPort: 3000
 ---
@@ -52,7 +52,7 @@ spec:
             limits:
               memory: 64Mi
               cpu: 200m
-          image: 192552324558.dkr.ecr.us-east-1.amazonaws.com/parrot:20
+          image: 905418150500.dkr.ecr.us-east-1.amazonaws.com/parrot:23
           ports:
             - containerPort: 3000
 
