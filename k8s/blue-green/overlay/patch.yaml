@@ -35,14 +35,7 @@ spec:
     spec:
       containers:
         - name: parrot-green
-          resources:
-            requests:
-              memory: 64Mi
-              cpu: 200m
-            limits:
-              memory: 64Mi
-              cpu: 200m
-          image: 533267286761.dkr.ecr.us-east-1.amazonaws.com/parrot:1
+          image: 533267286761.dkr.ecr.us-east-1.amazonaws.com/parrot:19
           ports:
             - containerPort: 3000
   
