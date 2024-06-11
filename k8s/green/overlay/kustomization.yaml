@@ -6,11 +6,6 @@ resources:
 
 configMapGenerator:
   - literals:
-      - TITLE="Blue Parrot"
-      - IMAGE="parrot-1.jpg"
-    name: blue
-    namespace: parrot
-  - literals:
       - TITLE="Green Parrot"
       - IMAGE="parrot-2.jpg"
     name: green

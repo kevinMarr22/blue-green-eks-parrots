@@ -23,6 +23,6 @@ spec:
             limits:
               memory: 64Mi
               cpu: 200m
-          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:23
+          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:25
           ports:
             - containerPort: 3000

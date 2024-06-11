@@ -1,35 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: parrot-blue
-  namespace: parrot
-spec:
-  selector:
-    matchLabels:
-      app: parrot
-      version: blue
-  template:
-    metadata:
-      labels:
-        app: parrot
-        version: blue
-    spec:
-      containers:
-        - name: parrot-blue
-          resources:
-            requests:
-              memory: 64Mi
-              cpu: 200m
-            limits:
-              memory: 64Mi
-              cpu: 200m
-          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:23
-          ports:
-            - containerPort: 3000
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: parrot-green
   namespace: parrot
 spec:
@@ -52,7 +23,7 @@ spec:
             limits:
               memory: 64Mi
               cpu: 200m
-          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:23
+          image: 730335205732.dkr.ecr.us-east-1.amazonaws.com/parrot:25
           ports:
             - containerPort: 3000
 
